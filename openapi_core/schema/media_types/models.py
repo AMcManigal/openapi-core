@@ -1,5 +1,6 @@
 """OpenAPI core media types models module"""
-from openapi_core.exceptions import InvalidValueType, InvalidMediaTypeValue
+from openapi_core.schema.media_types.exceptions import InvalidMediaTypeValue
+from openapi_core.schema.schemas.exceptions import InvalidSchemaValue
 
 
 class MediaType(object):
@@ -15,5 +16,5 @@ class MediaType(object):
 
         try:
             return self.schema.unmarshal(value)
-        except InvalidValueType as exc:
+        except InvalidSchemaValue as exc:
             raise InvalidMediaTypeValue(str(exc))
